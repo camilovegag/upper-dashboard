@@ -29,11 +29,11 @@ export default function SidebarNestedList(props) {
         {open ? <ExpandLess className={styles.colored} /> : <ExpandMore className={styles.colored} />}
       </ListItem>
       <Collapse in={open} timeout="auto" unmountOnExit>
-        <SidebarList text={props.collapseText} variant="h4" link={props.link} />
+        <SidebarList text={props.collapseText} variant="h4" link={props.link} onClick={props.onClick} />
       </Collapse>
       {props.extra ? (
         <Collapse in={open} timeout="auto" unmountOnExit>
-          <SidebarList text={props.extraCollapseText} variant="h4" link={props.extraLink} />
+          <SidebarList text={props.extraCollapseText} variant="h4" link={props.extraLink} onClick={props.onClick} />
         </Collapse>
       ) : null}
     </Box>

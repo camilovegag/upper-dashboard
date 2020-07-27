@@ -22,6 +22,7 @@ const useStyles = makeStyles((theme) => ({
   toolbar: {
     backgroundColor: theme.palette.primary.main,
     minHeight: "64px",
+    width: "100vw",
   },
 }));
 

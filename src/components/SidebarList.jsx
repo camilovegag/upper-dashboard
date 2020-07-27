@@ -19,7 +19,7 @@ export default function SidebarList(props) {
   return (
     <Link className={styles.link} to={props.link}>
       <List className={styles.margin} subheader={<ListSubheader className={styles.colored}>{props.title}</ListSubheader>}>
-        <ListItem button>
+        <ListItem button onClick={props.onClick}>
           <ListItemIcon className={styles.colored}>{props.icon}</ListItemIcon>
           <ListItemText primary={<Typography variant={props.variant}>{props.text}</Typography>} />
         </ListItem>
