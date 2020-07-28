@@ -1,12 +1,13 @@
 import React from "react";
-import { Box, Grid, Card, CardContent } from "@material-ui/core";
+import { Box, Grid } from "@material-ui/core";
 import { AttachMoney as MoneyIcon, LocalShipping as ShipIcon } from "@material-ui/icons";
 import DashboardCard from "./DashboardCard";
 import Text from "./Text";
+import DashboardTable from "./DashboardTable";
 
 export default function Dashboard() {
   return (
-    <Box mt={12} mb={4} mx={3} height="100vh">
+    <Box mt={12} mb={4} mx={3}>
       <Text fatherLink="Reportes" childLink="Dashboard" subTitle="Esto es lo que está pasando" />
       <Box mt={2}>
         <Grid container spacing={4}>
@@ -19,9 +20,7 @@ export default function Dashboard() {
       <Box mt={4}>
         <Grid container>
           <Grid item xs={12}>
-            <Card>
-              <CardContent>Hola</CardContent>
-            </Card>
+            <DashboardTable />
           </Grid>
         </Grid>
       </Box>

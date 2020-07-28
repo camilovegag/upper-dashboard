@@ -26,7 +26,7 @@ const categories = [
 export default function ProductsCreate() {
   const [value, setValue] = useState("");
   return (
-    <Box mt={12} mb={4} mx={3} height="100vh">
+    <Box mt={12} mb={4} mx={3}>
       <Text fatherLink="Administración" childLink="Productos" secondChild={true} secondChildLink="Crear" subTitle="Crear un nuevo producto" />
       <Box mt={2}>
         <Grid container spacing={4}>
@@ -44,7 +44,7 @@ export default function ProductsCreate() {
                       </Grid>
                       <Grid item xs={12}>
                         <Box style={{ height: "200px" }}>
-                          <ReactQuill theme="snow" value={value} onChange={setValue} style={{ height: "150px" }} />
+                          <ReactQuill theme="snow" value={value} onChange={setValue} style={{ height: "130px" }} />
                         </Box>
                       </Grid>
                     </Grid>
@@ -93,28 +93,20 @@ export default function ProductsCreate() {
                     <Divider />
                   </Grid>
                   {/* Espacio para subir archivos */}
-                  <Grid item xs={12} style={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
+                  <Grid item xs={12}>
                     <label>
-                      <Grid container style={{ display: "flex", flexDirection: "row", justifyContent: "center" }}>
-                        <Box p={8}>
-                          <Grid>
-                            <Input multiple="" type="file" autocomplete="off" tabindex="-1" style={{ display: "none" }} />
-                            <Box style={{ width: "130px", height: "142px" }}>
-                              <img
-                                style={{ width: "100%", height: "100%" }}
-                                alt="Select file"
-                                class="jss3651"
-                                src="https://firebasestorage.googleapis.com/v0/b/uppertest1.appspot.com/o/add_file.svg?alt=media&token=93d89d7f-2fa1-4d04-8494-5bd0da8c7613"
-                              />
-                            </Box>
+                      <Grid container spacing={2} style={{ display: "flex", flexDirection: "column", alignItems: "center", padding: "50px" }}>
+                        <Input multiple="" type="file" autocomplete="off" tabindex="-1" style={{ display: "none" }} />
+                        <Grid item xs={12} style={{ display: "flex" }}>
+                          <img style={{ width: "150px", height: "150px" }} alt="Select file" src="https://firebasestorage.googleapis.com/v0/b/uppertest1.appspot.com/o/add_file.svg?alt=media&token=93d89d7f-2fa1-4d04-8494-5bd0da8c7613" />
+                          <Grid item xs={12} style={{ display: "flex", flexDirection: "column", justifyContent: "center" }}>
+                            <Typography variant="subtitle1">Seleccionar archivo</Typography>
+                            <Box mt={1} />
+                            <Typography>
+                              Arrastra los archivos o has clic <u>aqui</u> para buscar en tu dispositivo
+                            </Typography>
                           </Grid>
-                          <Grid>
-                            <Typography variant="subtitle1">Seleccionar archivos</Typography>
-                            <Box mt={1}>
-                              <Typography variant="h2">Arrastra los archivos o has clic aqui para buscarlos en tu dispositivo</Typography>
-                            </Box>
-                          </Grid>
-                        </Box>
+                        </Grid>
                       </Grid>
                     </label>
                   </Grid>
@@ -133,7 +125,8 @@ export default function ProductsCreate() {
                     <Divider />
                   </Grid>
                   <Grid item xs={12}>
-                    <TextField label="Precio" variant="outlined" size="normal" fullWidth required type="number" />
+                    <TextField label="Precio" variant="outlined" size="normal" fullWidth required type="number" helperText="Si tienes un precio de descuento, éste será mostrado como el precio antiguo." />
+                    <Typography variant="h4" style={{ paddingTop: "16px", paddingLeft: "8px" }}></Typography>
                   </Grid>
                   <Grid item xs={12}>
                     <TextField label="Precio de descuento" variant="outlined" size="normal" fullWidth type="number" />
@@ -142,7 +135,7 @@ export default function ProductsCreate() {
               </CardContent>
             </Card>
           </Grid>
-          <Grid item xs={12} sm={4} md={3} lg={2}>
+          <Grid item xs={12} sm={5} md={3} lg={2}>
             <Button variant="contained" color="secondary" style={{ fontWeight: 400 }} fullWidth size="medium">
               Crear producto
             </Button>
