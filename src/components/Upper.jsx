@@ -22,7 +22,7 @@ export default function App() {
       <Grid container component="main">
         <Nav onClick={openDrawer} />
         <Grid item>
-          <Hidden lgDown>
+          <Hidden xlDown>
             <Sidebar variant="permanent" open={true} />
           </Hidden>
         </Grid>

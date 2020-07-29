@@ -3,6 +3,8 @@ import { Box, Button, Grid, Card, CardContent, TextField, Typography, MenuItem, 
 import ReactQuill from "react-quill";
 import "react-quill/dist/quill.snow.css";
 import Text from "./Text";
+import {useFirebaseApp, useUser } from "reactfire";
+import "firebase/firestore";
 
 const categories = [
   {
@@ -24,6 +26,31 @@ const categories = [
 ];
 
 export default function ProductsCreate() {
+  const firebase = useFirebaseApp();
+  const db = firebase.firestore();
+
+  const crearProducto = async(nombre, descripcion, categoria, codigoDelProducto, codigoReferencia, imagen, precio, precioDescuento)=>{
+   await db.collection("Tiendas").doc(user.uid).collection("Productos").add({
+      Nombre : nombre,
+      Descripcion : descripcion,
+      Categoria : categoria,
+      Codigo: codigoDelProducto,
+      Referencia : codigoReferencia,
+      Imagen: imagen,
+      Precio: precio,
+      Descuento: precioDescuento,
+  })
+  .then(function(docRef) {
+      console.log("Document written with ID: ", docRef.id);
+  })
+  .catch(function(error) {
+      console.error("Error adding document: ", error);
+  });
+  }
+ 
+
+  const user = useUser();
+  console.log(user.uid);
   const [value, setValue] = useState("");
   return (
     <Box mt={12} mb={4} mx={3}>
