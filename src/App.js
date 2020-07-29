@@ -1,13 +1,18 @@
 import React from "react";
 import { ThemeProvider, CssBaseline } from "@material-ui/core";
 import theme from "./theme";
-import Upper from "./components/Upper";
+import Auth from "./components/Auth";
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 export default function App() {
   return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Upper />
-    </ThemeProvider>
+    <Router>
+      <ThemeProvider theme={theme}>
+        <CssBaseline />
+        <Switch>
+          <Route path="/" exact component={Auth} />
+        </Switch>
+      </ThemeProvider>
+    </Router>
   );
 }

@@ -6,18 +6,18 @@ export default function Text(props) {
   return (
     <div>
       <Grid container>
-        <Typography variant="body2">{props.fatherLink}</Typography>
+        <Typography variant="body1">{props.fatherLink}</Typography>
         <Box mx={1}>
           <RightIcon />
         </Box>
-        <Typography variant="body2">{props.childLink}</Typography>
+        <Typography variant="body1">{props.childLink}</Typography>
         {props.secondChild ? (
           <Grid item>
             <Grid container>
               <Box mx={1}>
                 <RightIcon />
               </Box>
-              <Typography variant="body2">{props.secondChildLink}</Typography>
+              <Typography variant="body1">{props.secondChildLink}</Typography>
             </Grid>
           </Grid>
         ) : null}

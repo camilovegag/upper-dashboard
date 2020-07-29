@@ -1,7 +1,7 @@
 import React from "react";
 import { Box, Grid } from "@material-ui/core";
 import { AttachMoney as MoneyIcon, LocalShipping as ShipIcon } from "@material-ui/icons";
-import DashboardCard from "./DashboardCard";
+import DashboardCard from "./InfoCard";
 import Text from "./Text";
 import DashboardTable from "./DashboardTable";
 

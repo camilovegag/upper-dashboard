@@ -6,17 +6,17 @@ function createData(ref, client, payment, product, sku, address) {
 }
 
 const rows = [
-  createData("FAD103", "Diego Alzate", "Tarjeta de crédito", "Stilettos Amarillos", "ST36-AM", "Dg. 16 #17-1, Villavicencio, Meta"),
-  createData("FAD102", "John Doe", "Efectivo", "Sandalias Azules", "SA35-AZ", "Cl. 12b #47d-36, Villavicencio, Meta"),
-  createData("FAD101", "Angélica Pérez", "Tarjeta de crédito", "Plataformas Grises", "PL38-GR", "Cl. 25 #24-52, Villavicencio, Meta"),
-  createData("FAD100", "Gregorio Sandino", "Efectivo", "Tacones Rojos", "T35-R", "Cl. 15 #44-104, Villavicencio, Meta"),
-  createData("FAD99", "Juan Camilo Gutierrez", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
-  createData("FAD98", "Juan Alejandro Tarazona", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
-  createData("FAD97", "Juan Esteban Andrade", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
-  createData("FAD96", "Duvan Hernandez", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
-  createData("FAD95", "Nicole Kidman", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
-  createData("FAD94", "Diego Alzate", "Tarjeta de crédito", "Stilettos Amarillos", "ST36-AM", "Dg. 16 #17-1, Villavicencio, Meta"),
-  createData("FAD93", "John Doe", "Efectivo", "Sandalias Azules", "SA35-AZ", "Cl. 12b #47d-36, Villavicencio, Meta"),
+  createData("UP011", "Diego Alzate", "Tarjeta de crédito", "Stilettos Amarillos", "ST36-AM", "Dg. 16 #17-1, Villavicencio, Meta"),
+  createData("UP010", "John Doe", "Efectivo", "Sandalias Azules", "SA35-AZ", "Cl. 12b #47d-36, Villavicencio, Meta"),
+  createData("UP009", "Angélica Pérez", "Tarjeta de crédito", "Plataformas Grises", "PL38-GR", "Cl. 25 #24-52, Villavicencio, Meta"),
+  createData("UP008", "Gregorio Sandino", "Efectivo", "Tacones Rojos", "T35-R", "Cl. 15 #44-104, Villavicencio, Meta"),
+  createData("UP007", "Juan Camilo Gutierrez", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
+  createData("UP006", "Juan Alejandro Tarazona", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
+  createData("UP005", "Juan Esteban Andrade", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
+  createData("UP004", "Duvan Hernandez", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
+  createData("UP003", "Nicole Kidman", "Efectivo", "Botas Negras", "B39-NE", "Cl. 31 #31-157a, Villavicencio, Meta"),
+  createData("UP002", "Diego Alzate", "Tarjeta de crédito", "Stilettos Rojos", "ST36-R", "Dg. 16 #17-1, Villavicencio, Meta"),
+  createData("UP001", "John Doe", "Efectivo", "Sandalias Azules", "SA35-AZ", "Cl. 12b #47d-36, Villavicencio, Meta"),
 ];
 
 export default function DashboardTable() {
@@ -87,7 +87,16 @@ export default function DashboardTable() {
           )}
         </TableBody>
       </Table>
-      <TablePagination count={rows.length} page={page} onChangePage={handleChangePage} rowsPerPage={rowsPerPage} onChangeRowsPerPage={handleChangeRowsPerPage} rowsPerPageOptions={[1, 5, 10]} />
+      <TablePagination
+        style={{ color: "#596d79" }}
+        count={rows.length}
+        page={page}
+        onChangePage={handleChangePage}
+        rowsPerPage={rowsPerPage}
+        onChangeRowsPerPage={handleChangeRowsPerPage}
+        rowsPerPageOptions={[1, 5, 10]}
+        labelRowsPerPage="Filas por página"
+      />
     </TableContainer>
   );
 }

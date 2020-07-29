@@ -19,20 +19,20 @@ export default function App() {
 
   return (
     <Router>
-      <Switch>
-        <Grid container component="main">
-          <Nav onClick={openDrawer} />
-          <Grid item xs={0}>
-            <Hidden lgDown>
-              <Sidebar variant="permanent" open={true} />
-            </Hidden>
-          </Grid>
-          <Grid item xs={0}>
-            <Hidden xlUp>
-              <Sidebar variant="temporary" open={open} onClose={openDrawer} />
-            </Hidden>
-          </Grid>
-          <Grid item xs={12}>
+      <Grid container component="main">
+        <Nav onClick={openDrawer} />
+        <Grid item>
+          <Hidden lgDown>
+            <Sidebar variant="permanent" open={true} />
+          </Hidden>
+        </Grid>
+        <Grid item>
+          <Hidden xlUp>
+            <Sidebar variant="temporary" open={open} onClose={openDrawer} />
+          </Hidden>
+        </Grid>
+        <Grid item xs={12}>
+          <Switch>
             <Route component={Dashboard} path="/" exact />
             <Route component={Finances} path="/finanzas" />
             <Route component={Clients} path="/clientes" />
@@ -40,9 +40,9 @@ export default function App() {
             <Route component={ProductsCreate} path="/productos/crear" exact />
             <Route component={Orders} path="/pedidos" />
             <Route component={Invoices} path="/facturas" />
-          </Grid>
+          </Switch>
         </Grid>
-      </Switch>
+      </Grid>
     </Router>
   );
 }

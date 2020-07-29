@@ -33,7 +33,7 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function DashboardCard(props) {
+export default function InfoCard(props) {
   const styles = useStyles();
   return (
     <Grid item xs={props.xs} sm={props.sm} md={props.md} lg={props.lg}>

@@ -1,6 +1,8 @@
 import React from "react";
 import { AppBar, IconButton, makeStyles, Toolbar, Typography } from "@material-ui/core";
 import { Menu as MenuIcon, ExitToApp as ExitIcon, Notifications as NotificationsIcon } from "@material-ui/icons";
+import "firebase/auth";
+import { useFirebaseApp } from "reactfire";
 
 const useStyles = makeStyles((theme) => ({
   appBar: {
@@ -28,6 +30,10 @@ const useStyles = makeStyles((theme) => ({
 
 export default function Nav(props) {
   const styles = useStyles();
+  const firebase = useFirebaseApp();
+  const logout = async () => {
+    await firebase.auth().signOut();
+  };
   return (
     <AppBar className={styles.appBar} position="fixed">
       <Toolbar className={styles.toolbar}>
@@ -40,7 +46,7 @@ export default function Nav(props) {
         <IconButton className={styles.iconButton}>
           <NotificationsIcon />
         </IconButton>
-        <IconButton className={styles.iconButton}>
+        <IconButton className={styles.iconButton} onClick={logout}>
           <ExitIcon />
         </IconButton>
       </Toolbar>
