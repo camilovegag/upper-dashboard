@@ -17,7 +17,6 @@ function Copyright() {
     </Typography>
   );
 }
-
 const useStyles = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
@@ -43,15 +42,14 @@ const useStyles = makeStyles((theme) => ({
 
 export default function SignIn() {
   const classes = useStyles();
+
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const firebase = useFirebaseApp();
   const user = useUser();
-
   const login = async () => {
     await firebase.auth().signInWithEmailAndPassword(email, password);
   };
-
   return (
     <div>
       {!user && (

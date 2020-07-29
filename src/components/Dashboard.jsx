@@ -4,8 +4,11 @@ import { AttachMoney as MoneyIcon, LocalShipping as ShipIcon } from "@material-u
 import DashboardCard from "./InfoCard";
 import Text from "./Text";
 import DashboardTable from "./DashboardTable";
+import { useUser } from "reactfire";
 
 export default function Dashboard() {
+  const user = useUser();
+  console.log(user.uid);
   return (
     <Box mt={12} mb={4} mx={3}>
       <Text fatherLink="Reportes" childLink="Dashboard" subTitle="Esto es lo que está pasando" />
