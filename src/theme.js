@@ -2,6 +2,15 @@ import { createMuiTheme } from "@material-ui/core";
 import "typeface-pacifico";
 
 const theme = createMuiTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1920,
+      xl: 2040,
+    },
+  },
   palette: {
     primary: {
       main: "#2bb2ff",
