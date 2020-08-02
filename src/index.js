@@ -6,11 +6,9 @@ import firebaseConfig from "./firebase-config";
 
 ReactDOM.render(
   <FirebaseAppProvider firebaseConfig={firebaseConfig}>
-    <React.StrictMode>
       <Suspense fallback="Cargando...">
         <App />
       </Suspense>
-    </React.StrictMode>
   </FirebaseAppProvider>,
   document.getElementById("root")
 );
