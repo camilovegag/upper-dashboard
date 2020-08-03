@@ -43,7 +43,7 @@ export default function ProductsCreate() {
   
   const crearProducto = async() =>{
     console.log('MEU')
-
+    
     const uploadTask = await storage.ref(`/pruebas/${imagen.name}`).put(imagen);
     
     uploadTask.task.on('state_changed',
@@ -53,7 +53,7 @@ export default function ProductsCreate() {
         uploadTask.task.snapshot.ref.getDownloadURL().then(function (downloadURL){
           db.collection("Tiendas").doc(user.uid).collection("Productos").add({
             Nombre : nombre,
-            Descripcion : descripcion,
+            Descripcion : getText(descripcion),
             Categoria : categoria,
             Codigo: codigoDelProducto,
             Referencia : codigoReferencia,
@@ -71,6 +71,13 @@ export default function ProductsCreate() {
       }
     );
   }
+
+  function getText(html) {
+    var tmp = document.createElement('div')
+    tmp.innerHTML = html;
+    return tmp.textContent || tmp.innerText;
+  }
+
 
   const user = useUser();
   console.log(user.uid);
