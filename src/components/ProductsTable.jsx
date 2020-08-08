@@ -1,26 +1,44 @@
-import React, { useState } from "react";
+import React, { useState , useEffect} from "react";
 import { Avatar, TableContainer, Paper, Table, TableCell, TableRow, TableHead, TableBody, Typography, TablePagination } from "@material-ui/core";
 import ProductsTableButton from "./ProductsTableButton";
-import {useFirebaseApp, useUser } from "reactfire";
+import {useFirebaseApp, useUser, useFirestoreDocData, useFirestore} from "reactfire";
 import "firebase/firestore";
 
-export default function ProductsTable() {
-
+function useData(){
   const firebase = useFirebaseApp();
-  const db = firebase.firestore();
   const user = useUser();
 
-  console.log(user.uid);
+  const [rows, setRows] = useState([]);
+
+  useEffect(() => {
+    firebase
+      .firestore()
+      .collection("Tiendas")
+      .doc(user.uid)
+      .collection("Productos")
+      .onSnapshot((snapshot)=>{
+        const newData = snapshot.docs.map((doc) => ({
+          id: doc.id,
+          img: doc.data().Foto,
+          name: doc.data().Nombre,
+          category: doc.data().Categoria,
+          ref: doc.data().Codigo,
+          sku: doc.data().Referencia, 
+          price: doc.data().Precio,
+        }))
+        setRows(newData)
+      })
+  },[])
+
+  return rows;
+}
 
 
-  function createData(img, name, stock, category, ref, sku, price) {
-    return { img, name, stock, category, ref, sku, price };
-  }
-
+export default function ProductsTable() {
+  const rows = useData();
 
   const stock = true;  
-  const rows = [];
-  const rowss = [
+  /*const rowss = [
 
     createData("https://i.pinimg.com/originals/d0/2c/0b/d02c0bfbe0f737e1b67f5f2cda5f9485.jpg", "Stilettos Amarillos", stock, "Stilettos", 10412, "ST-AM", "$60.000"),
     createData(
@@ -39,22 +57,10 @@ export default function ProductsTable() {
     createData("https://firebasestorage.googleapis.com/v0/b/uppertest1.appspot.com/o/baila.jpg?alt=media&token=e18d94ec-eb70-45d3-b73b-d47f08ba1f86", "Sandalias Café", stock, "Sandalias", 10406, "ST-CF", "$30.000"),
     createData("https://firebasestorage.googleapis.com/v0/b/uppertest1.appspot.com/o/baila.jpg?alt=media&token=e18d94ec-eb70-45d3-b73b-d47f08ba1f86", "Sandalias Café", stock, "Sandalias", 10405, "ST-CF", "$30.000"),
     createData("https://firebasestorage.googleapis.com/v0/b/uppertest1.appspot.com/o/baila.jpg?alt=media&token=e18d94ec-eb70-45d3-b73b-d47f08ba1f86", "Sandalias Café", stock, "Sandalias", 10404, "ST-CF", "$30.000"),
-  ];
+  ];*/
 
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(5);
-
-  const obteniendoDatos = async () => {
-    var datos  = await db.collection("Tiendas").doc(user.uid).collection("Productos").get();
-    datos.forEach(function(doc) {
-      rows.push(createData(doc.data().Foto, doc.data().Nombre ,stock , doc.data().Categoria, doc.data().Codigo, doc.data().Referencia, doc.data().Precio))
-      console.log("Que pasa aqui")
-      console.log(doc.data())
-    });
-  };
-
-  obteniendoDatos();
-  console.log(rows);
 
   const handleChangePage = (e, newPage) => {
     setPage(newPage);
@@ -63,6 +69,7 @@ export default function ProductsTable() {
     setRowsPerPage(parseInt(e.target.value, 10));
     setPage(0);
   };
+
   const emptyRows = rowsPerPage - Math.min(rowsPerPage, rows.length - page * rowsPerPage);
 
   return (
@@ -95,7 +102,7 @@ export default function ProductsTable() {
         </TableHead>
         <TableBody>
           {rows.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage).map((row) => (
-            <TableRow key={row.ref}>
+            <TableRow key={row.id}>
               <TableCell>
                 <Avatar src={row.img} />
               </TableCell>
