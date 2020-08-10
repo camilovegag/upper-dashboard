@@ -32,6 +32,8 @@ export default function ProductsCreate() {
 
   const storage = firebase.storage();
 
+  const user = useUser();
+
   const [nombre, setNombre] = useState("");
   const [descripcion, setDesc] = useState("");
   const [categoria, setCat] = useState("");
@@ -42,9 +44,7 @@ export default function ProductsCreate() {
   const [imagen, setImagen] = useState("");
   
   const crearProducto = async() =>{
-    console.log('MEU')
-    
-    const uploadTask = await storage.ref(`/pruebas/${imagen.name}`).put(imagen);
+    const uploadTask = await storage.ref(`/pruebas/tiendas/${user.uid}/${imagen.name}`).put(imagen);
     
     uploadTask.task.on('state_changed',
       null,
@@ -78,9 +78,6 @@ export default function ProductsCreate() {
     return tmp.textContent || tmp.innerText;
   }
 
-
-  const user = useUser();
-  console.log(user.uid);
 
   return (
     <Box mt={12} mb={4} mx={3}>
